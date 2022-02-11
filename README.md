@@ -10,4 +10,18 @@ This Application is for learning purpose
 In order to download movie from Movie Maniac you will first need to have Torrent client like like uTorrent/FreeDownloadManger installed in your device.
 
 ## Heads Up
-No tests included yet in the application because I am currently learning Testing in Android. Will iclude tests in the future. 
+No tests included yet in the application because I am currently learning Testing in Android. Will iclude tests in the future.  
+
+## How the app looks
+
+### Light Mode
+
+<img src="https://github.com/MagimbiJr/MovieManiac-Jetpack-Compose/blob/master/movie_maniac_light.gif" height="400" />
+
+<img src="https://github.com/MagimbiJr/MovieManiac-Jetpack-Compose/blob/master/movie_maniac_details_light.gif" height="400" />
+
+### Dark Mode
+
+<img src="https://github.com/MagimbiJr/MovieManiac-Jetpack-Compose/blob/master/movie_maniac_dark.gif" height="400" />
+
+<img src="https://github.com/MagimbiJr/MovieManiac-Jetpack-Compose/blob/master/movie_maniac_details_dark.gif" height="400" />
