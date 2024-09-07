@@ -7,7 +7,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.filled.Search
@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -26,7 +27,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.navArgument
+import coil.compose.AsyncImage
 import coil.compose.rememberImagePainter
+import coil.request.ImageRequest
 import com.tana.moviemaniac.components.HomeScreenTopBar
 import com.tana.moviemaniac.components.LoadingScreen
 import com.tana.moviemaniac.components.MovieManiacNavDrawer
@@ -40,18 +43,16 @@ import kotlinx.coroutines.CoroutineScope
 fun MoviesListScreen(
     navHostController: NavHostController,
     modifier: Modifier = Modifier,
-    scaffoldState: ScaffoldState,
     coroutineScope: CoroutineScope,
     viewModel: MoviesListViewModel = hiltViewModel()
 ) {
     Scaffold(
-        topBar = { HomeScreenTopBar(
-            scaffoldState = scaffoldState,
-            coroutineScope = coroutineScope
-        ) },
-        drawerContent = { MovieManiacNavDrawer(modifier = modifier)},
-        scaffoldState = scaffoldState
-    ) {
+        topBar = {
+            HomeScreenTopBar(
+                coroutineScope = coroutineScope
+            )
+        },
+    ) { paddingValues ->
         val popularMovies by remember { viewModel.popularMovies }
         val trendingMovies by remember { viewModel.trendingMovies }
         val isLoading by remember { viewModel.isLoading }
@@ -62,11 +63,12 @@ fun MoviesListScreen(
             modifier = modifier
                 .fillMaxSize()
                 .padding(16.dp)
+                .consumeWindowInsets(paddingValues)
         ) {
             Spacer(modifier = modifier.height(8.dp))
             Text(
                 text = "Let's download now",
-                style = MaterialTheme.typography.h4
+                style = MaterialTheme.typography.headlineMedium
             )
             Spacer(modifier = modifier.height(8.dp))
             SearchBar(modifier = modifier) { searchInput ->
@@ -152,13 +154,13 @@ fun PopularMovies(
         ) {
             Text(
                 text = "Popular",
-                style = MaterialTheme.typography.body1,
+                style = MaterialTheme.typography.bodyMedium,
                 fontSize = 19.sp,
                 fontWeight = FontWeight.Bold
             )
             Text(
                 text = "See all",
-                style = MaterialTheme.typography.body1,
+                style = MaterialTheme.typography.bodyMedium,
                 fontSize = 16.sp,
                 modifier = modifier
                     .clickable {
@@ -177,8 +179,8 @@ fun PopularMovies(
 
         itemsIndexed(items = movies) { index, movie ->
 
-            if (index >= movies.lastIndex  && !endReached) {
-                    viewModel.loadPopularMovies()
+            if (index >= movies.lastIndex && !endReached) {
+                viewModel.loadPopularMovies()
             }
             Column(
                 modifier = modifier
@@ -190,12 +192,14 @@ fun PopularMovies(
                         )
                     }
             ) {
-                val painter = rememberImagePainter(data = movie.movieCover)
                 Card(
                     shape = RoundedCornerShape(10.dp)
                 ) {
-                    Image(
-                        painter = painter,
+                    AsyncImage(
+                        model = ImageRequest.Builder(
+                            context = LocalContext.current
+                        ).data(movie.movieCover)
+                            .build(),
                         contentDescription = "Movie Cover",
                         modifier = modifier.size(width = 130.dp, height = 195.dp),
                         contentScale = ContentScale.Fit
@@ -222,13 +226,13 @@ fun TrendingMovies(
         ) {
             Text(
                 text = "Trending movies",
-                style = MaterialTheme.typography.body1,
+                style = MaterialTheme.typography.bodyMedium,
                 fontSize = 19.sp,
                 fontWeight = FontWeight.Bold
             )
             Text(
                 text = "See all",
-                style = MaterialTheme.typography.body1,
+                style = MaterialTheme.typography.bodyMedium,
                 fontSize = 16.sp,
                 modifier = modifier
                     .clickable {
@@ -256,7 +260,9 @@ fun TrendingMovies(
                         )
                     },
                 shape = RoundedCornerShape(12.dp),
-                backgroundColor = MaterialTheme.colors.surface
+                colors = CardDefaults.cardColors(
+                    MaterialTheme.colorScheme.surface
+                )
             ) {
                 Row(
                     modifier = modifier.padding(horizontal = 16.dp, vertical = 8.dp),
@@ -281,7 +287,7 @@ fun TrendingMovies(
                     ) {
                         Text(
                             text = "${movie.movieTitle} - ${movie.year}",
-                            style = MaterialTheme.typography.body1,
+                            style = MaterialTheme.typography.bodyMedium,
                             modifier = modifier,
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
@@ -351,11 +357,12 @@ fun SearchBar(
             .clip(CircleShape),
         placeholder = { Text(text = "Search") },
         leadingIcon = { Icon(imageVector = Icons.Default.Search, contentDescription = "Search") },
-        colors = TextFieldDefaults.textFieldColors(
-            cursorColor = MaterialTheme.colors.onSurface,
+        colors = TextFieldDefaults.colors(
+            cursorColor = MaterialTheme.colorScheme.onSurface,
             focusedIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent,
-            backgroundColor = MaterialTheme.colors.surface
+            focusedContainerColor = MaterialTheme.colorScheme.surface,
+            unfocusedContainerColor = MaterialTheme.colorScheme.surface
         )
     )
 }
@@ -373,7 +380,7 @@ fun ErrorScreen(
     ) {
         Text(
             text = message,
-            style = MaterialTheme.typography.body1,
+            style = MaterialTheme.typography.bodyMedium,
             fontSize = 18.sp,
             fontWeight = FontWeight.W500,
             textAlign = TextAlign.Center

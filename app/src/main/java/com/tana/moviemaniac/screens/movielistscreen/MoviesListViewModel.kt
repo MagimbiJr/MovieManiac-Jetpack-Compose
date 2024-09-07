@@ -62,6 +62,7 @@ class MoviesListViewModel @Inject constructor(
                     loadError.value = result.message!!
                     isLoading.value = false
                 }
+                is Resource.Loading -> Unit
             }
 
         }
@@ -97,6 +98,7 @@ class MoviesListViewModel @Inject constructor(
                     loadError.value = result.message!!
                     isLoading.value = false
                 }
+                is Resource.Loading -> Unit
             }
 
         }
@@ -131,6 +133,7 @@ class MoviesListViewModel @Inject constructor(
                     loadError.value = result.message!!
                     isLoading.value = false
                 }
+                is Resource.Loading -> Unit
             }
 
         }
