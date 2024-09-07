@@ -1,6 +1,5 @@
 package com.tana.moviemaniac
 
-import androidx.compose.material.ScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -14,9 +13,8 @@ import com.tana.moviemaniac.screens.movielistscreen.MoviesListScreen
 import kotlinx.coroutines.CoroutineScope
 
 @Composable
-fun MovieAniGraph(
+fun MovieManiacGraph(
     navHostController: NavHostController,
-    scaffoldState: ScaffoldState,
     coroutineScope: CoroutineScope
 ) {
     NavHost(
@@ -26,7 +24,6 @@ fun MovieAniGraph(
         composable(Screens.HomeScreen.route) {
             MoviesListScreen(
                 navHostController = navHostController,
-                scaffoldState = scaffoldState,
                 coroutineScope = coroutineScope
             )
         }

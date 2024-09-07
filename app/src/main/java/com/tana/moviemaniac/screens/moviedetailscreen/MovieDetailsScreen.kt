@@ -9,7 +9,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.runtime.*
@@ -45,7 +45,7 @@ fun MovieDetailsScreen(
 ) {
     Scaffold(
         topBar = { DetailScreenTopBar(navHostController = navHostController)}
-    ) {
+    ) { paddingValues ->
         val movieInfo = produceState<Resource<MovieDetail>>(initialValue = Resource.Loading()) {
             value = viewModel.getMovieInfo(id)
         }.value
@@ -131,7 +131,7 @@ fun MovieDetails(
                     ) {
                         Text(
                             text = movieDetail.data.movie.title,
-                            style = MaterialTheme.typography.body1,
+                            style = MaterialTheme.typography.bodyMedium,
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold
                         )
@@ -206,14 +206,14 @@ fun MovieDetails(
             Spacer(modifier = modifier.height(16.dp))
             Text(
                 text = "Overview",
-                style = MaterialTheme.typography.body1,
+                style = MaterialTheme.typography.bodyMedium,
                 fontSize = 19.sp,
                 fontWeight = FontWeight.Bold
             )
             Spacer(modifier = modifier.height(12.dp))
             Text(
                 text = movieDetail.data.movie.description_full,
-                style = MaterialTheme.typography.body1,
+                style = MaterialTheme.typography.bodyMedium,
                 fontSize = 16.sp,
                 fontWeight = FontWeight.W500
             )
@@ -241,13 +241,13 @@ fun Suggestions(
         ) {
             Text(
                 text = "Related",
-                style = MaterialTheme.typography.body1,
+                style = MaterialTheme.typography.bodyMedium,
                 fontSize = 19.sp,
                 fontWeight = FontWeight.Bold
             )
             Text(
                 text = "See all",
-                style = MaterialTheme.typography.body1,
+                style = MaterialTheme.typography.bodyMedium,
                 fontSize = 16.sp,
                 modifier = modifier
                     .clickable {
@@ -302,15 +302,17 @@ fun GenresList(
                         .padding(end = 16.dp)
                         .border(
                             width = 1.dp,
-                            color = MaterialTheme.colors.onSurface,
+                            color = MaterialTheme.colorScheme.onSurface,
                             shape = RoundedCornerShape(10.dp)
                         ),
                     shape = RoundedCornerShape(16.dp),
-                    backgroundColor = MaterialTheme.colors.background
+                    colors = CardDefaults.cardColors(
+                        MaterialTheme.colorScheme.background
+                    )
                 ) {
                     Text(
                         text = genre,
-                        style = MaterialTheme.typography.body1,
+                        style = MaterialTheme.typography.bodyMedium,
                         fontSize = 17.sp,
                         fontWeight = FontWeight.Bold,
                         modifier = modifier.padding(horizontal = 12.dp, vertical = 6.dp)
@@ -336,7 +338,7 @@ fun DownloadOptionsDialog(
                 modifier = modifier
                     .fillMaxWidth()
                     .clip(RoundedCornerShape(12.dp))
-                    .background(MaterialTheme.colors.background)
+                    .background(MaterialTheme.colorScheme.background)
             ) {
                 Column(
                     modifier = modifier
@@ -344,7 +346,7 @@ fun DownloadOptionsDialog(
                 ) {
                     Text(
                         text = "720p",
-                        style = MaterialTheme.typography.body1,
+                        style = MaterialTheme.typography.bodyMedium,
                         modifier = modifier
                             .fillMaxWidth()
                             .clickable { on720clicked() }
@@ -356,7 +358,7 @@ fun DownloadOptionsDialog(
                     Spacer(modifier = modifier.height(4.dp))
                     Text(
                         text = "1080p",
-                        style = MaterialTheme.typography.body1,
+                        style = MaterialTheme.typography.bodyMedium,
                         modifier = modifier
                             .fillMaxWidth()
                             .clickable { on1080Clicked() }

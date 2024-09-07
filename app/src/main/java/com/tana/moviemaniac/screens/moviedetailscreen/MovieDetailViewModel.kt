@@ -1,6 +1,6 @@
 package com.tana.moviemaniac.screens.moviedetailscreen
 
-import androidx.compose.material.Text
+import androidx.compose.material3.Text
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

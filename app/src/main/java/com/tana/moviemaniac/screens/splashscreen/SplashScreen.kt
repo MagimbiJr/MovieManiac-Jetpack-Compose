@@ -2,9 +2,9 @@ package com.tana.moviemaniac.screens.splashscreen
 
 import android.window.SplashScreen
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Theaters
 import androidx.compose.runtime.Composable
@@ -55,10 +55,10 @@ fun SplashScreen(
         }
         Text(
             text = "MOVIE MANIAC",
-            style = MaterialTheme.typography.h6,
+            style = MaterialTheme.typography.headlineSmall,
             fontSize = 25.sp,
             textAlign = TextAlign.Center,
-            color = MaterialTheme.colors.primary,
+            color = MaterialTheme.colorScheme.primary,
             fontWeight = FontWeight.Bold
         )
     }
