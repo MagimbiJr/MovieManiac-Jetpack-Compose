@@ -1,4 +1,4 @@
-package com.tana.moviemaniac
+package com.tana.moviemaniac.presentation
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

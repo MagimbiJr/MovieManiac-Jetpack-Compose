@@ -1,9 +1,7 @@
-package com.tana.moviemaniac.screens.allmovies
+package com.tana.moviemaniac.presentation.allmovies
 
 import androidx.lifecycle.ViewModel
-import com.tana.moviemaniac.data.remote.response.movieslist.MoviesList
 import com.tana.moviemaniac.repository.Repository
-import com.tana.moviemaniac.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

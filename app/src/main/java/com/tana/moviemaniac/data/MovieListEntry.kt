@@ -6,5 +6,5 @@ data class MovieListEntry(
     val movieCover: String,
     val year: Int,
     val rating: Double,
-    val dateUploaded: String
+    val dateUploaded: String?
 )

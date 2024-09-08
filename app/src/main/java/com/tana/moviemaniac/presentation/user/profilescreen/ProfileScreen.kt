@@ -1,4 +1,4 @@
-package com.tana.moviemaniac.screens.user.profilescreen
+package com.tana.moviemaniac.presentation.user.profilescreen
 
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
