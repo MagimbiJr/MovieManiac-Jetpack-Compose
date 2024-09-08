@@ -1,4 +1,4 @@
-package com.tana.moviemaniac.ui.theme
+package com.tana.moviemaniac.presentation.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

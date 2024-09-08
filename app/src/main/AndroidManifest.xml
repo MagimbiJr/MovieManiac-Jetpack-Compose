@@ -4,7 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <application
-        android:name="com.tana.moviemaniac.MovieAniApplication"
+        android:name="com.tana.moviemaniac.presentation.MovieAniApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieAni">
         <activity
-            android:name="com.tana.moviemaniac.MovieAniActivity"
+            android:name="com.tana.moviemaniac.presentation.MovieAniActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.MovieAni.NoActionBar">

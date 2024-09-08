@@ -1,4 +1,4 @@
-package com.tana.moviemaniac.screens.allmovies
+package com.tana.moviemaniac.presentation.allmovies
 
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
@@ -22,7 +22,7 @@ import com.tana.moviemaniac.components.AllMoviesScreenTopBar
 import com.tana.moviemaniac.components.LoadingScreen
 import com.tana.moviemaniac.components.Screens
 import com.tana.moviemaniac.data.MovieListEntry
-import com.tana.moviemaniac.screens.movielistscreen.MoviesListViewModel
+import com.tana.moviemaniac.presentation.movielistscreen.MoviesListViewModel
 import com.tana.moviemaniac.util.LIMIT
 
 @Composable

@@ -1,9 +1,8 @@
-package com.tana.moviemaniac.screens.moviedetailscreen
+package com.tana.moviemaniac.presentation.moviedetailscreen
 
 import android.content.Intent
 import android.net.Uri
 import android.util.Log
-import android.view.textservice.SuggestionsInfo
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
@@ -31,8 +30,7 @@ import com.tana.moviemaniac.components.LoadingScreen
 import com.tana.moviemaniac.components.Screens
 import com.tana.moviemaniac.data.Suggestion
 import com.tana.moviemaniac.data.remote.response.moviedetail.MovieDetail
-import com.tana.moviemaniac.data.remote.response.suggestions.MoviesSuggestions
-import com.tana.moviemaniac.ui.theme.OrangeColor
+import com.tana.moviemaniac.presentation.ui.theme.OrangeColor
 import com.tana.moviemaniac.util.Resource
 import java.net.URLEncoder
 

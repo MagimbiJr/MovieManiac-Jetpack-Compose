@@ -1,4 +1,4 @@
-package com.tana.moviemaniac.screens.movielistscreen
+package com.tana.moviemaniac.presentation.movielistscreen
 
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -18,7 +18,7 @@ class MoviesListViewModel @Inject constructor(
 ) : ViewModel() {
 
     var pageNumber = 1
-    var sortBy: Any = "rating"
+    var sortBy: Any? = "rating"
     var popularMovies = mutableStateOf<List<MovieListEntry>>(listOf())
     var trendingMovies = mutableStateOf<List<MovieListEntry>>(listOf())
     var allMovies = mutableStateOf<List<MovieListEntry>>(listOf())
@@ -104,7 +104,7 @@ class MoviesListViewModel @Inject constructor(
         }
     }
 
-    fun loadAllMovies() {
+    private fun loadAllMovies() {
         viewModelScope.launch {
             isLoading.value = true
             when(val result = repository.getMoviesList(paggeNumber = pageNumber,limit = LIMIT)) {

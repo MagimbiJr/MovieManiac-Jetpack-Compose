@@ -1,6 +1,5 @@
-package com.tana.moviemaniac.screens.splashscreen
+package com.tana.moviemaniac.presentation.splashscreen
 
-import android.window.SplashScreen
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
